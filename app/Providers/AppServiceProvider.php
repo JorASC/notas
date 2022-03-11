@@ -32,5 +32,9 @@ class AppServiceProvider extends ServiceProvider
         Inertia::share('flash', function() {
             return ['status' => Session::get('status')];
         });
+
+        if (env('REDIRECT_HTTPS')) {
+            $url->formatScheme('https://');
+        }
     }
 }
